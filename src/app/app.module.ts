@@ -1,25 +1,26 @@
-import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
-import {AppComponent} from "./app.component";
-import {firebaseConfig} from "environments/firebaseConfig";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
+import { AppComponent } from "./app.component";
+import { firebaseConfig } from "environments/firebaseConfig";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import {AuthService} from "app/shared/auth.service";
-import {LoginUserComponent} from "app/login-user/login-user.component";
-import {DisplayUserComponent} from "app/display-user/display-user.component";
-import {RegisterUserComponent} from "app/register-user/register-user.component";
-import {AlertModule} from "ngx-bootstrap";
-import {ResetPasswordComponent} from "./reset-password/reset-password.component";
-import {Routes, RouterModule} from "@angular/router";
-import {HomePageComponent} from "./pages/home-page.component";
-import {RegisterPageComponent} from "./pages/register-page.component";
-import {AllInOnePageComponent} from "./pages/all-in-one-page.component";
-import {LoginPageComponent} from "./pages/login-page.component";
+import { AuthService } from "app/shared/auth.service";
+import { LoginUserComponent } from "app/login-user/login-user.component";
+import { DisplayUserComponent } from "app/display-user/display-user.component";
+import { RegisterUserComponent } from "app/register-user/register-user.component";
+import { AlertModule } from "ngx-bootstrap";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
+import { Routes, RouterModule } from "@angular/router";
+import { HomePageComponent } from "./pages/home-page.component";
+import { RegisterPageComponent } from "./pages/register-page.component";
+import { AllInOnePageComponent } from "./pages/all-in-one-page.component";
+import { LoginPageComponent } from "./pages/login-page.component";
 import { LoggedInGuard } from "app/shared/logged-in-guard";
 import { DashboardPageComponent } from './pages/dashboard-page.component';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
         RegisterPageComponent,
         AllInOnePageComponent,
         LoginPageComponent,
-        DashboardPageComponent
+        DashboardPageComponent,
+        AddEmployeeComponent
     ],
     imports: [
         BrowserModule,
