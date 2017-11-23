@@ -5,10 +5,10 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { firebaseConfig } from "environments/firebaseConfig";
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthService } from "app/shared/auth.service";
-import { LoginUserComponent } from "app/login-user/login-user.component";
+import { AuthService } from "@app/shared";
+import { LoginUserComponent } from "@app/login-user";
 import { DisplayUserComponent } from "app/display-user/display-user.component";
 import { RegisterUserComponent } from "app/register-user/register-user.component";
 import { AlertModule } from "ngx-bootstrap";
@@ -20,7 +20,15 @@ import { AllInOnePageComponent } from "./pages/all-in-one-page.component";
 import { LoginPageComponent } from "./pages/login-page.component";
 import { LoggedInGuard } from "app/shared/logged-in-guard";
 import { DashboardPageComponent } from './pages/dashboard-page.component';
-import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { AddEmployeeComponent } from '@app/employee';
+import { CoreModule } from '@app/core'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatCardModule, MatListModule, MatIconModule, MatTableModule, MatFormFieldModule, MatPaginatorModule, MatInputModule } from "@angular/material";
+import { ListEmployeesComponent } from './employee/list-employees/list-employees.component'
+
+import * as firebase from 'firebase/app';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -28,7 +36,9 @@ const routes: Routes = [
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'dashboard', component: DashboardPageComponent, canActivate: [LoggedInGuard] },
-    { path: '', component: HomePageComponent }
+    { path: 'employees', component: ListEmployeesComponent },
+    { path: '', component: HomePageComponent },
+    { path: '**', component: HomePageComponent }
 ];
 
 @NgModule({
@@ -43,12 +53,24 @@ const routes: Routes = [
         AllInOnePageComponent,
         LoginPageComponent,
         DashboardPageComponent,
-        AddEmployeeComponent
+        AddEmployeeComponent,
+        ListEmployeesComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        /* Material Animation */
+        BrowserAnimationsModule,
+        /* Material */
+        MatCardModule,
+        MatListModule,
+        MatIconModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatPaginatorModule,
+        MatInputModule,
+        /* End Material */
         HttpModule,
         AlertModule.forRoot(),
         AngularFireModule.initializeApp(firebaseConfig, "fishtank"),
